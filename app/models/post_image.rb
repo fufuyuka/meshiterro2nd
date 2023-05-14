@@ -3,6 +3,7 @@ class PostImage < ApplicationRecord
   #ActiveStorageでimageカラムとして画像を持たせる
   has_one_attached :image
   belongs_to :user
+  has_many :post_comments, dependent: :destroy
   
   #画像未保存の場合のデフォルト画像の差し込み
   def get_image
