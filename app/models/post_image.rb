@@ -4,6 +4,12 @@ class PostImage < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+  #いいね済か否かを特定する
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
   
   #画像未保存の場合のデフォルト画像の差し込み
   def get_image
