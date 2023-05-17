@@ -5,6 +5,8 @@ class PostImage < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  validates :shop_name, :image, presence: true
 
   #いいね済か否かを特定する
   def favorited_by?(user)
