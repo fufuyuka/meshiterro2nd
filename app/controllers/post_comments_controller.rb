@@ -2,15 +2,14 @@ class PostCommentsController < ApplicationController
   
   def create
     post_image = PostImage.find(params[:post_image_id])
-    comment = current_user.post_comments.new(post_comment_params)
-    comment.post_image_id = post_image.id
-    if comment.save
-      redirect_to post_image_path(post_image)
-    else
+    @post_comment = current_user.post_comments.new(post_comment_params)
+    @post_comment.post_image_id = post_image.id
+    unless @post_comment.save
       @post_image = post_image
-      @post_comment = PostComment.new
       render template: "post_images/show"
+      return
     end
+    redirect_to post_image_path(post_image)
   end
   
   def destroy
