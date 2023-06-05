@@ -1,10 +1,16 @@
 <!--ユーザーの詳細-->
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
-    <P><%= link_to "プロフィール編集", edit_user_path(@user) %></P>
-  <% end %>
+<div class="container">
+  <div class="row justify-content-center pt-4">
+    <h3><%= @user.name %></h3>
+  </div>
+  <div class="row justify-content-center">
+    <%= image_tag @user.get_profile_image(100,100) %>
+  </div>
+  <div class="row justify-content-center pt-3">
+    <% if @user == current_user %>
+      <P><%= link_to "プロフィール編集", edit_user_path(@user), class:"btn btn-outline-info btn-xs" %></P>
+    <% end %>
+  </div>
 </div>
 
 <!--ユーザーの投稿一覧-->
