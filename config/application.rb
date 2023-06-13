@@ -12,10 +12,8 @@ module Meshiterro2nd
     config.load_defaults 6.1
     
     # デフォルトのlocaleを日本語(:ja)にする
+    #devisegeの日本語化gemを追加しbundleinstallと$ails g devise:i18n:locale jaのコマンドを実行
     config.i18n.default_locale = :ja
-    
-    #i18nの設定ファイルを呼び出す
-    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
     
     # Configuration for the application, engines, and railties goes here.
     #

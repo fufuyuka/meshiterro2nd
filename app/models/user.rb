@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  #dbにnull false制約忘れたのでここに
+  validates :name, presence: true
+  
   #ActiveStorageでimageカラムとして画像を持たせる
   has_one_attached :profile_image
   
